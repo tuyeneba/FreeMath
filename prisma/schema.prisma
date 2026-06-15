@@ -1,0 +1,35 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  username     String    @unique
+  passwordHash String
+  fullName     String
+  powerScore   Int       @default(0)
+  theme        String    @default("light") // "light" | "dark"
+  language     String    @default("vi")    // "vi" | "en"
+  level        String    @default("Basic") // "Fingermath", "Basic", "Super 1", etc.
+  role         String    @default("user")  // "user" | "admin"
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  histories    History[]
+}
+
+model History {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type         String    // "Fingermath" | "Soroban" | "Super"
+  mode         String    // "Flashcard" | "Basic" | "Little Buddy" | etc.
+  config       String    // JSON config: "1D/3R/6S"
+  score        Int
+  totalQns     Int
+  correctQns   Int
+  createdAt    DateTime  @default(now())
+}
