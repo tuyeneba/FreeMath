@@ -44,3 +44,7 @@ next-env.d.ts
 # sqlite
 /prisma/dev.db*
 
+# agents runtime preview files
+.agents/preview.log
+.agents/preview.pid
+

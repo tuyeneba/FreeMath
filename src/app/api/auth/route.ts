@@ -3,8 +3,55 @@ import { cookies } from "next/headers";
 import { prisma } from "@/lib/db";
 import { hashPassword } from "@/lib/utils";
 
+async function seedDatabaseIfEmpty() {
+  try {
+    const count = await prisma.user.count();
+    if (count === 0) {
+      console.log("Database is empty, auto-seeding users...");
+      
+      const studentUsername = "nhi0908664418";
+      const studentPasswordHash = hashPassword("taptrung");
+      await prisma.user.upsert({
+        where: { username: studentUsername },
+        update: { passwordHash: studentPasswordHash },
+        create: {
+          username: studentUsername,
+          passwordHash: studentPasswordHash,
+          fullName: "Nhi Superbrain",
+          powerScore: 1200,
+          theme: "light",
+          language: "vi",
+          level: "Basic",
+          role: "user",
+        },
+      });
+
+      const adminUsername = "admin";
+      const adminPasswordHash = hashPassword("Freem@th");
+      await prisma.user.upsert({
+        where: { username: adminUsername },
+        update: { passwordHash: adminPasswordHash },
+        create: {
+          username: adminUsername,
+          passwordHash: adminPasswordHash,
+          fullName: "System Administrator",
+          powerScore: 9999,
+          theme: "light",
+          language: "vi",
+          level: "Basic",
+          role: "admin",
+        },
+      });
+      console.log("Database auto-seeded successfully!");
+    }
+  } catch (err) {
+    console.error("Auto-seeding failed:", err);
+  }
+}
+
 export async function GET() {
   try {
+    await seedDatabaseIfEmpty();
     const cookieStore = await cookies();
     const sessionCookie = cookieStore.get("session");
     
@@ -39,6 +86,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    await seedDatabaseIfEmpty();
     const body = await request.json();
     const { username, password } = body;
 
