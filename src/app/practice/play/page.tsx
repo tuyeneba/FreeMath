@@ -13,26 +13,26 @@ interface Question {
 
 import Image from "next/image";
 
-import f0 from "@/pictures/Fingers/0.png";
-import f1 from "@/pictures/Fingers/1.png";
-import f2 from "@/pictures/Fingers/2.png";
-import f3 from "@/pictures/Fingers/3.png";
-import f4 from "@/pictures/Fingers/4.png";
-import f5 from "@/pictures/Fingers/5.png";
-import f6 from "@/pictures/Fingers/6.png";
-import f7 from "@/pictures/Fingers/7.png";
-import f8 from "@/pictures/Fingers/8.png";
-import f9 from "@/pictures/Fingers/9.png";
+import f0 from "@/pictures/fingers/0.png";
+import f1 from "@/pictures/fingers/1.png";
+import f2 from "@/pictures/fingers/2.png";
+import f3 from "@/pictures/fingers/3.png";
+import f4 from "@/pictures/fingers/4.png";
+import f5 from "@/pictures/fingers/5.png";
+import f6 from "@/pictures/fingers/6.png";
+import f7 from "@/pictures/fingers/7.png";
+import f8 from "@/pictures/fingers/8.png";
+import f9 from "@/pictures/fingers/9.png";
 
-import f10 from "@/pictures/Fingers/10.png";
-import f20 from "@/pictures/Fingers/20.png";
-import f30 from "@/pictures/Fingers/30.png";
-import f40 from "@/pictures/Fingers/40.png";
-import f50 from "@/pictures/Fingers/50.png";
-import f60 from "@/pictures/Fingers/60.png";
-import f70 from "@/pictures/Fingers/70.png";
-import f80 from "@/pictures/Fingers/80.png";
-import f90 from "@/pictures/Fingers/90.png";
+import f10 from "@/pictures/fingers/10.png";
+import f20 from "@/pictures/fingers/20.png";
+import f30 from "@/pictures/fingers/30.png";
+import f40 from "@/pictures/fingers/40.png";
+import f50 from "@/pictures/fingers/50.png";
+import f60 from "@/pictures/fingers/60.png";
+import f70 from "@/pictures/fingers/70.png";
+import f80 from "@/pictures/fingers/80.png";
+import f90 from "@/pictures/fingers/90.png";
 
 import type { StaticImageData } from "next/image";
 
